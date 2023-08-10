@@ -27,7 +27,7 @@ trait HasOptions
                 'width' => $this->width(),
                 'toolbar' => json_decode($this->toolbar()),
                 'zoom' => json_decode($this->zoom()),
-                'fontFamily' => json_decode($this->fontFamily()),
+                'fontFamily' => $this->fontFamily(),
                 'foreColor' => $this->foreColor(),
             ],
             'plotOptions' => [
