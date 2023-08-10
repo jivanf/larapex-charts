@@ -18,6 +18,13 @@ trait HasOptions
         return $this;
     }
 
+    public function mergeOptions($options): self
+    {
+        $this->options = array_replace_recursive($this->options, $options);
+
+        return $this;
+    }
+
     private function getDefaultOptions(): array
     {
         return [
