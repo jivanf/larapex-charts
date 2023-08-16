@@ -1,5 +1,5 @@
 <script>
-    var options = {!! json_encode($chart->getOptions()) !!};
+    var options = @json($chart->getOptions());
     var chart = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);
 
     chart.render();
