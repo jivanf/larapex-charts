@@ -409,13 +409,14 @@ class LarapexChart
         return $this->stacked;
     }
 
+
     /*
     |--------------------------------------------------------------------------
-    | JSON Options Builder
+    | Array Options Builder
     |--------------------------------------------------------------------------
     */
 
-    public function toJson(): \Illuminate\Http\JsonResponse
+    public function toArray(): array
     {
         $options = [
             'chart' => [
@@ -449,17 +450,28 @@ class LarapexChart
             'markers' => json_decode($this->markers()),
         ];
 
-        if($this->labels()) {
+        if ($this->labels()) {
             $options['labels'] = $this->labels();
         }
 
-        if($this->stroke()) {
+        if ($this->stroke()) {
             $options['stroke'] = json_decode($this->stroke());
         }
 
+        return $options;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | JSON Options Builder
+    |--------------------------------------------------------------------------
+    */
+
+    public function toJson(): \Illuminate\Http\JsonResponse
+    {
         return response()->json([
             'id' => $this->id(),
-            'options' => $options,
+            'options' => $this->toArray(),
         ]);
     }
 
