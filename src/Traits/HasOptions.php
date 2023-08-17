@@ -8,7 +8,7 @@ trait HasOptions
 
     public function getOptions(): array
     {
-        return $this->options ? array_merge_recursive($this->getDefaultOptions(), $this->options) : $this->getDefaultOptions();
+        return $this->options ? array_merge_recursive($this->toArray(), $this->options) : $this->toArray();
     }
 
     public function setOptions($options): self
@@ -23,38 +23,5 @@ trait HasOptions
         $this->options = array_replace_recursive($this->options, $options);
 
         return $this;
-    }
-
-    private function getDefaultOptions(): array
-    {
-        return [
-            'chart' => [
-                'type' => $this->type(),
-                'height' => $this->height(),
-                'width' => $this->width(),
-                'toolbar' => json_decode($this->toolbar()),
-                'zoom' => json_decode($this->zoom()),
-                'fontFamily' => $this->fontFamily(),
-                'foreColor' => $this->foreColor(),
-            ],
-            'plotOptions' => [
-                'bar' => json_decode($this->horizontal()),
-            ],
-            'colors' => json_decode($this->colors()),
-            'series' => json_decode($this->dataset()),
-            'dataLabels' => json_decode($this->dataLabels()),
-            'title' => [
-                'text' => $this->title()
-            ],
-            'subtitle' => [
-                'text' => $this->subtitle() ? $this->subtitle() : '',
-                'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
-            ],
-            'xaxis' => [
-                'categories' => json_decode($this->xAxis()),
-            ],
-            'grid' => json_decode($this->grid()),
-            'markers' => json_decode($this->markers()),
-        ];
     }
 }
