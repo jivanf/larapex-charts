@@ -1,7 +1,7 @@
 {
     "name": "jivanf/larapex-charts",
     "description": "Package to provide easy api to build apex charts on Laravel",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": [
         "arielmejiadev",
         "larapex",
