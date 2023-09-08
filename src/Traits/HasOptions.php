@@ -8,7 +8,7 @@ trait HasOptions
 
     public function getOptions(): array
     {
-        return $this->options ? array_merge_recursive($this->toArray(), $this->options) : $this->toArray();
+        return $this->options ? array_replace_recursive($this->toArray(), $this->options) : $this->toArray();
     }
 
     public function setOptions($options): self
