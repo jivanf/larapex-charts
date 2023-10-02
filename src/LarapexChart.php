@@ -478,51 +478,14 @@ class LarapexChart
     |--------------------------------------------------------------------------
     */
 
-    public function toVue() :array
+    public function toVue(): array
     {
-        $options = [
-            'chart' => [
-                'height' => $this->height(),
-                'toolbar' => json_decode($this->toolbar()),
-                'zoom' => json_decode($this->zoom()),
-                'fontFamily' => json_decode($this->fontFamily()),
-                'foreColor' => $this->foreColor(),
-                'sparkline' => json_decode($this->sparkline()),
-                'stacked' => $this->stacked(),
-            ],
-            'plotOptions' => [
-                'bar' => json_decode($this->horizontal()),
-            ],
-            'colors' => json_decode($this->colors()),
-            'dataLabels' => json_decode($this->dataLabels()),
-            'title' => [
-                'text' => $this->title()
-            ],
-            'subtitle' => [
-                'text' => $this->subtitle() ? $this->subtitle() : '',
-                'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
-            ],
-            'xaxis' => [
-                'categories' => json_decode($this->xAxis()),
-            ],
-            'grid' => json_decode($this->grid()),
-            'markers' => json_decode($this->markers()),
-        ];
-
-        if($this->labels()) {
-            $options['labels'] = $this->labels();
-        }
-
-        if($this->stroke()) {
-            $options['stroke'] = json_decode($this->stroke());
-        }
-
         return [
             'height' => $this->height(),
             'width' => $this->width(),
             'type' => $this->type(),
-            'options' => $options,
-            'series' => json_decode($this->dataset()),
+            'options' => $this->toArray(),
+            'series' => $this->dataset(),
         ];
     }
 }
