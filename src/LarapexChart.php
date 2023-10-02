@@ -167,7 +167,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setHorizontal(bool $horizontal): LarapexChart
+    public function setHorizontal(bool $horizontal = true): LarapexChart
     {
         $this->horizontal = json_encode(['horizontal' => $horizontal]);
         return $this;
@@ -244,7 +244,7 @@ class LarapexChart
         return $this;
     }
 
-    public function setToolbar(bool $show, bool $zoom = true): LarapexChart
+    public function setToolbar(bool $show = true, bool $zoom = true): LarapexChart
     {
         $this->toolbar = json_encode(['show' => $show]);
         $this->zoom = json_encode(['enabled' => $zoom ? $zoom : false]);
