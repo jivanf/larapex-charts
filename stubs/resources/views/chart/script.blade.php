@@ -11,6 +11,12 @@
     if (options.yaxis?.labels?.formatter) {
         options.yaxis.labels.formatter = Function('val', 'opt', options.yaxis.labels.formatter);
     }
+    if (options.tooltip?.x?.formatter) {
+        options.tooltip.x.formatter = Function('val', 'opt', options.tooltip.x.formatter);
+    }
+    if (options.tooltip?.y?.formatter) {
+        options.tooltip.y.formatter = Function('val', 'opt', options.tooltip.y.formatter);
+    }
     var chart = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);
 
     chart.render();
