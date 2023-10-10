@@ -4,14 +4,20 @@ namespace ArielMejiaDev\LarapexCharts\Traits;
 
 trait ComplexChartDataAggregator
 {
-    public function addData(string $name, array $data) :self
+    public function addData(string $name, array $data, string|null $type = null): self
     {
-        $dataset = json_decode($this->dataset);
+        $dataset = json_decode($this->dataset, true);
 
-        $dataset[] = [
+        $addedData = [
             'name' => $name,
-            'data' => $data
+            'data' => $data,
         ];
+
+        if (!is_null($type)) {
+            $addedData['type'] = $type;
+        }
+
+        $dataset[] = $addedData;
 
         $this->dataset = json_encode($dataset);
 
