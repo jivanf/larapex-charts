@@ -285,7 +285,7 @@ class LarapexChart
 
     public function container(): mixed
     {
-        return View::make('larapex-charts::chart.container', ['id' => $this->id()]);
+        return View::make('larapex-charts::chart.container', ['id' => $this->id(), 'cdn' => $this->cdn(), 'script' => $this->script()]);
     }
 
     public function script(): mixed
