@@ -295,7 +295,9 @@ class LarapexChart
 
     public static function cdn(): string
     {
-        return 'https://cdn.jsdelivr.net/npm/apexcharts';
+        $version = config('larapex-charts.apex_charts_version');
+
+        return "https://cdn.jsdelivr.net/npm/apexcharts@$version";
     }
 
     public function id(): string
