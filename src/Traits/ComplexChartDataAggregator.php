@@ -17,20 +17,22 @@ trait ComplexChartDataAggregator
             foreach ($defaultGoalOptions as $key => $value) {
                 $goal[$key] ??= $value;
             }
-        };
+        }
 
         $addedData = [
             'name' => $name,
-            'data' => collect($this->xAxis())
-                ->zip($data, $goals)
-                ->map(
-                    fn($item) => [
-                        'x' => $item[0],
-                        'y' => $item[1],
-                        ...$item[2] !== null ? ['goals' => [$item[2]]] : [],
-                    ],
-                )
-                ->toArray(),
+            'data' => empty($data)
+                ? []
+                : collect($this->xAxis())
+                    ->zip($data, $goals)
+                    ->map(
+                        fn($item) => [
+                            'x' => $item[0],
+                            'y' => $item[1],
+                            ...$item[2] !== null ? ['goals' => [$item[2]]] : [],
+                        ],
+                    )
+                    ->toArray(),
         ];
 
         if ($type !== null) {
