@@ -17,6 +17,10 @@
     if (options.tooltip?.y?.formatter) {
         options.tooltip.y.formatter = Function('val', 'opt', options.tooltip.y.formatter);
     }
+    if (options.legend?.formatter) {
+        options.legend.formatter = Function('val', 'opt', options.legend.formatter);
+    }
+
     var chart = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);
 
     chart.render();
