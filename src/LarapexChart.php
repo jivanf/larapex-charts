@@ -437,7 +437,12 @@ class LarapexChart
             'series' => json_decode($this->dataset, true) ?? [],
             'dataLabels' => json_decode($this->dataLabels, true),
             'title' => [
-                'text' => $this->title()
+                'text' => $this->title(),
+            ],
+            'tooltip' => [
+                'style' => [
+                    'fontFamily' => $this->fontFamily(),
+                ],
             ],
             'subtitle' => [
                 'text' => $this->subtitle() ? $this->subtitle() : '',
