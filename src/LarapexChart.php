@@ -342,7 +342,7 @@ class LarapexChart
 
     public function dataset(): array
     {
-        return json_decode($this->dataset, true);
+        return empty($this->dataset) ? [] : json_decode($this->dataset, true);
     }
 
     public function height(): int
@@ -410,7 +410,6 @@ class LarapexChart
         return $this->stacked;
     }
 
-
     /*
     |--------------------------------------------------------------------------
     | Array Options Builder
@@ -435,7 +434,7 @@ class LarapexChart
                 'bar' => json_decode($this->horizontal, true),
             ],
             'colors' => json_decode($this->colors, true),
-            'series' => json_decode($this->dataset, true),
+            'series' => json_decode($this->dataset, true) ?? [],
             'dataLabels' => json_decode($this->dataLabels, true),
             'title' => [
                 'text' => $this->title()
