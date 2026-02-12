@@ -1,7 +1,7 @@
 {
     "name": "jivanf/larapex-charts",
     "description": "Package to provide easy api to build apex charts on Laravel",
-    "version": "11.0.0",
+    "version": "12.0.0",
     "keywords": [
         "arielmejiadev",
         "larapex",
@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": "^8.1|^8.2",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/support": ">=11.0",
         "ext-json": "*"
     },
     "require-dev": {
